@@ -40,4 +40,10 @@ public class MessageController {
         return new ResponseEntity<>(messageService.getOlderMessages(user.getId(), chat, time), HttpStatus.OK);
     }
 
+    @PostMapping("chats/{chatId}/send")
+    public void sendMessageByHttp(@RequestHeader(name = "Authorization") String token,
+                            @RequestBody Message message, @PathVariable Long chatId) throws JsonProcessingException {
+        messageService.sendMessage(authenticationService.getUserId(token.replace("Bearer ", "")), message, chatId);
+    }
+
 }
