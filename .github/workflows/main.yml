@@ -18,6 +18,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - run: cd mathenger-api
-    - name: Test with Gradle
-      run: gradle test
+    - name: Test API with Gradle
+      run: | 
+        cd mathenger-api
+        gradle test
