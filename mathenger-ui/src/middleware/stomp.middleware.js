@@ -10,7 +10,7 @@ const stompMiddleware = store => {
     function deactivateClient() {
         if (client != null) {
             Object.values(topicSubscriptions)
-                .forEach(subscription => subscription.unsubscribe());
+                .forEach(subscription => subscription && subscription.unsubscribe());
             client.deactivate();
         }
     }

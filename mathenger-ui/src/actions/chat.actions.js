@@ -69,8 +69,11 @@ function selectChat(id) {
 }
 
 function addAndSelectIfNotExists(chat) {
-    return {
-        type: chatConstants.ADD_AND_SELECT_IF_NOT_EXISTS,
-        chat
+    return dispatch => {
+        dispatch({
+            type: chatConstants.ADD_AND_SELECT_IF_NOT_EXISTS,
+            chat
+        });
+        dispatch(stompActions.subscribe(`/topic/chat/${chat.id}`));
     }
 }
