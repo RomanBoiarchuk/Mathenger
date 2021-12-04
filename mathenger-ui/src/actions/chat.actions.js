@@ -3,6 +3,7 @@ import {chatService} from "../services";
 import {stompActions} from "./stomp.actions";
 import addNotification from "react-push-notification";
 import {chatUtils} from "../utils";
+import {Capacitor} from "@capacitor/core";
 
 export const chatActions = {
     setMyChats,
@@ -34,7 +35,7 @@ function addChat(chat) {
         addNotification({
             title: chatUtils.getName(chat, state.account.currentAccount),
             message: 'New chat',
-            native: true,
+            native: Capacitor.getPlatform() === 'web'
         });
         dispatch({
             type: chatConstants.ADD_CHAT,

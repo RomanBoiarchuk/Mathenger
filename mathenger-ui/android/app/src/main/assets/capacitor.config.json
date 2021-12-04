@@ -1,0 +1,8 @@
+{
+	"appId": "io.ionic.mathenger",
+	"appName": "Mathenger",
+	"bundledWebRuntime": false,
+	"npmClient": "npm",
+	"webDir": "build",
+	"cordova": {}
+}

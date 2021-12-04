@@ -3,6 +3,7 @@ import {stompActions} from "./stomp.actions";
 import {mathService} from "../services";
 import addNotification from "react-push-notification";
 import {chatUtils} from "../utils";
+import {Capacitor} from "@capacitor/core";
 
 export const messageActions = {
     addMessage,
@@ -24,7 +25,7 @@ function addMessage(message, chatId) {
             addNotification({
                 title: chatUtils.getName(chat, state.account.currentAccount),
                 message: `${message.author.firstName} ${message.author.lastName}: ${message.text}`,
-                native: true,
+                native: Capacitor.getPlatform() === 'web',
                 silent: state.chat?.chats[0]?.id === chatId
             });
         }

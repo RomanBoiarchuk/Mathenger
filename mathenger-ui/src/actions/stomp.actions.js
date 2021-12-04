@@ -2,6 +2,7 @@ import {notificationTypes, stompConstants} from "../constants";
 import {messageActions} from "./message.actions";
 import {chatActions} from "./chat.actions";
 import addNotification from "react-push-notification";
+import {Capacitor} from "@capacitor/core";
 
 export const stompActions = {
     connect,
@@ -51,7 +52,7 @@ function receiveMessage(message, topic) {
                     addNotification({
                         title: 'New Notification',
                         message: notification.text,
-                        native: true,
+                        native: Capacitor.getPlatform() === 'web'
                     });
                     break;
                 default:

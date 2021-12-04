@@ -1,0 +1,7 @@
+{
+  "name": "Mathenger",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
